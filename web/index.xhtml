@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Lorena Kauane</title>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="resources/css/lores.css" rel="stylesheet"/>
+        <link href="resources/css/bootstrap.css" rel="stylesheet"/>
+        <link href="resources/css/bootstrap-theme.css" rel="stylesheet"/>
+
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">            
+            <p:layoutUnit position="west" size="320">
+                <a href="cliente.jsf">dasdasd</a>
+                <div  class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="nav-side-menu">
+                                <div class="brand" style="font-family: monospace;">Sisteminha da Lores</div>
+                                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+                                <div class="menu-list">
+                                    <ul id="menu-content" class="menu-content collapse out">
+                                        <li>
+                                            <a href="#">
+                                                <i class="glyphicon glyphicon-home"></i> Home
+                                            </a>
+                                        </li>
+                                        <!-- Parte do MENU-->
+                                        <li data-toggle="collapse" data-target="#new" class="collapsed">
+                                            <a href="#"><i class="glyphicon glyphicon-user"></i> Clientes<span class="arrow"></span></a>
+                                        </li>
+
+                                        <ul class="sub-menu collapse" id="new">
+                                            <li> 
+                                                <a href="cliente.jsf">
+                                                    <i class="glyphicon glyphicon-plus"></i> Novo Cliente!
+                                                </a>
+                                            </li>
+                                            <li> 
+                                                <a href="edita.jsf">
+                                                    <i class="glyphicon glyphicon-pencil"></i> Buscar/Editar Clientes
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                        <li data-toggle="collapse" data-target="#prod" class="collapsed">
+                                            <a href="#"><i class="glyphicon glyphicon-shopping-cart"></i> Produtos <span class="arrow"></span></a>
+                                        </li>
+                                        <ul class="sub-menu collapse" id="prod">
+                                            <li> 
+                                                <a href="produto.jsf">
+                                                    <i class="glyphicon glyphicon-plus"></i> Novo produto!
+                                                </a> 
+
+
+                                            </li>
+                                            <li> 
+                                                <a href="editaProd.jsf">
+                                                    <i class="glyphicon glyphicon-pencil"></i> Buscar/Editar Produtos
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                        <li data-toggle="collapse" data-target="#venda" class="collapsed">
+                                            <a href="#"><i class="glyphicon glyphicon-usd"></i> Venda <span class="arrow"></span></a>
+                                        </li>
+                                        <ul class="sub-menu collapse" id="venda">
+                                            <li> 
+                                                <a href="registroVenda.jsf">
+                                                    <i class="glyphicon glyphicon-plus"></i> Nova venda!
+                                                </a>
+                                            </li>
+                                            <li> 
+                                                <a href="BuscarVenda.jsf">
+                                                    <i class="glyphicon glyphicon-search"></i> Relatório  de vendas
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                        <br></br>
+                                        <li data-toggle="collapse" data-target="#fun" class="collapsed">
+                                            <a href="#"><i class="glyphicon glyphicon-user"></i> Funcionários <span class="arrow"></span></a>
+                                        </li>
+                                        <ul class="sub-menu collapse" id="fun">
+                                            <li> 
+                                                <a href="#">
+                                                    <i class="glyphicon glyphicon-plus"></i> Novo Funcionário
+                                                </a>
+                                            </li>
+                                            <li> 
+                                                <a href="#">
+                                                    <i class="glyphicon glyphicon-pencil"></i> Buscar/Editar Funcionários
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                        <!-- Inserir mais coisas aqui Pra baixo-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Include all compiled plugins (below), or include individual files as needed -->
+                <script src="resources/js/bootstrap.min.js"></script>
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" >
+                <!-- insert especifica qualquer coisa -->
+                <ui:insert></ui:insert>
+            </p:layoutUnit>
+
+
+        </p:layout>
+
+
+    </h:body>
+</html>
+

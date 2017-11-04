@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="index.xhtml"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <center><h1 style="font-family: monospace">Cadastro de vendas</h1>
+        <p:separator></p:separator>
+        <br></br>
+        <h:form id="idBuscaProduto">
+            <h:panelGrid columns="1" styleClass="fonte">
+                <h:outputLabel style="font-family: monospace;" value="Cliente:" />
+                <h:selectOneMenu style="font-family: monospace;" value="#{registroVendas.clienteSelecionado}">
+                    <f:selectItem itemLabel="Selecione um cliente:"/>
+                    <f:selectItems value="#{registroVendas.clienteSelect}" />
+                    <f:ajax event="change"  render="idClienteSelecionado"/>
+
+                </h:selectOneMenu>
+
+                <h:outputLabel style="font-family: monospace;" value="Selecione os produto:" />
+                
+                <h:selectOneMenu style="font-family: monospace;"  value="#{registroVendas.produtoSelecionado}">
+                    <f:selectItems value="#{registroVendas.produtoSelect}"/>
+                    <f:ajax event="change"  render="idProdutoSelecionado"/>
+                    
+                </h:selectOneMenu>
+                <br></br>
+                <h:panelGroup>
+                    <h:commandButton style="font-family: monospace;" value="Pesquisar" action="#{registroVendas.buscarProduto}" >
+                        <f:ajax event="change"  render="idValorTotal"/>
+                    </h:commandButton>
+                </h:panelGroup>
+                <br></br>
+                <h:outputLabel style="font-family: monospace;" value="Id do Cliente: " />
+                <h:outputText style="font-family: monospace;" id="idClienteSelecionado" value="#{registroVendas.clienteSelecionado.idCliente}" />
+                <br></br>
+                <h:outputLabel style="font-family: monospace;" value="Id do Produto: " />
+                <h:outputText style="font-family: monospace;" id="idProdutoSelecionado" value="#{registroVendas.produtoSelecionado.idProduto}" />
+                <h:dataTable style="font-family: monospace;" value="#{registroVendas.carrinhoCompras}" rendered="#{not empty registroVendas.carrinhoCompras}" var="produto" border="1">
+                <br></br>
+                    
+                    <f:facet name="header">Listagem carrinho de compras</f:facet>
+
+                    <h:column>
+                        <f:facet name="header">Descriçao</f:facet>
+                            #{produto.descricao}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Ações</f:facet>
+                        <h:commandLink  action="#{registroVendas.excluirProdutoCarrinho}"  onclick="if (!confirm('Deseja realmente excluir o produto #{produto.descricao} do carrinho?'))
+                            return false;" value="Excluir">
+                            
+                            <f:setPropertyActionListener target="#{registroVendas.produtoSelecionado}" value="#{produto}" />
+                        </h:commandLink>
+                    </h:column>
+
+                </h:dataTable>
+                <br></br>
+                <h:panelGroup>
+                    <h:outputLabel style="font-family: monospace;" value="SubTotal: " />	
+                    <h:outputText style="font-family: monospace;" id="idValorTotal" value="#{registroVendas.valorTotal}" >
+                        <f:convertNumber currencyCode="BRL" type="currency" />
+                    </h:outputText>	
+                </h:panelGroup>
+
+                <h:commandButton style="font-family: monospace;" value="Finalizar Venda" action="#{registroVendas.finalizarVenda}" />		
+
+            </h:panelGrid>
+
+        </h:form>
+        </center>
+    </h:body>
+</ui:decorate>
+

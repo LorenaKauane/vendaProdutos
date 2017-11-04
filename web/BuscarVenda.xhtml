@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             template="index.xhtml"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <h:form>
+            <center><h1 style="font-family: monospace" class="page-header">Lista de Vendas!</h1>
+                <h:inputHidden value="#{registroVendas.venda.idVenda}"/>
+                <h:dataTable  styleClass="table table-hover" value="#{registroVendas.vendaSelecionado}"
+                              var="venda" rendered="#{not empty registroVendas.vendaSelecionado}" style="font-family: monospace" 
+                              id="tabela">
+
+                    <h:column>
+                        <f:facet name="header" >Id venda</f:facet>
+                        <h:outputText value="#{venda.idVenda}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header" >Cliente</f:facet>
+                        <h:outputText value="#{venda.cliente.nome}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header" >Produto</f:facet>
+                        <h:outputText value="#{venda.produto.descricao}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header" >Valor</f:facet>
+                        <h:outputText value="#{venda.produto.valor}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header" >Edição</f:facet>
+                        <h:commandLink action="#{registroVendas.deletar()}" onclick="if (!confirm('Deseja realmente \n\
+                    excluir a venda?'))
+                                    return false;" title="Deletar" >
+
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            <f:setPropertyActionListener target="#{registroVendas.vendaSelecionado}" value="#{venda}" rendered="@form"/>
+                        </h:commandLink>
+
+
+                    </h:column>
+
+                </h:dataTable>  
+                sdasdasdsd
+            </center>
+        </h:form>
+    </h:body>
+</ui:decorate>
+

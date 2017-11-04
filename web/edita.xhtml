@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="index.xhtml"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:f="http://xmlns.jcp.org/jsf/core"
+             >
+
+    <h:body>
+        <center><h1 style="font-family: monospace" class="page-header">Lista de Clientes!</h1>
+
+            <br></br>
+            <h:form id="lista">
+                <h:inputHidden value="#{clienteBean.clienteSelecionado.idCliente}"/>
+                <h:dataTable  styleClass="table table-hover" value="#{clienteBean.lista}"
+                              var="cliente" rendered="#{not empty clienteBean.lista}" style="font-family: monospace"
+                              id="tabela" >
+
+                    <h:column>
+                        <f:facet name="header" >ID</f:facet>
+                        <h:outputText value="#{cliente.idCliente}" />
+                    </h:column>
+
+
+                    <h:column>
+                        <f:facet name="header" >NOME</f:facet>
+                        <h:outputText value="#{cliente.nome}" />
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">CPF</f:facet>
+                        <h:outputText value="#{cliente.cpf}">
+                            <f:converter converterId="CpfConverter"/>
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">ENDEREÇO</f:facet>
+                        <h:outputText value="#{cliente.endereco}"/>
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">E-MAIL</f:facet>
+                        <h:outputText value="#{cliente.email}"/>
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">RENDA</f:facet>
+                        <h:outputText value="#{cliente.renda}">
+                            <f:convertNumber currencyCode="BRL" type="currency"/>
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">DATA DO CADASTRO</f:facet>
+                        <h:outputText value="#{cliente.dataCadastro}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header" >EDIÇÃO</f:facet>
+                        <h:commandLink action="#{clienteBean.excluir}" onclick="if (!confirm('Deseja realmente \n\
+                    excluir o cliente #{cliente.nome}?'))
+                                return false;" title="Deletar" >
+
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            <f:setPropertyActionListener target="#{clienteBean.clienteSelecionado}" value="#{cliente}" rendered="@form"/>
+                        </h:commandLink>
+
+                        <h:commandLink   action="#{clienteBean.redireciona()}" title="Editar">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            <f:setPropertyActionListener target="#{clienteBean.clienteSelecionado}" value="#{cliente}" />
+                        </h:commandLink>
+                    </h:column>
+
+                </h:dataTable>
+
+
+                <br></br>
+                <hr></hr>
+                <h:commandButton styleClass="btn btn-primary" action="#{clienteBean.redireciona()}" value="Novo Cliente" title="Novo Cliente"
+                                 style=" font-family: monospace;width: 35%"/>
+            </h:form>
+        </center>
+    </h:body>
+</ui:decorate>
+

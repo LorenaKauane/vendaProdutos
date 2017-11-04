@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:f="http://xmlns.jcp.org/jsf/core"
+             template="index.xhtml">
+
+    <h:body>
+        <form>
+
+
+            <h:form id="edicao">
+                <center>
+                    <h1 class="page-header" style="font-family: monospace">Cadastro de clientes!</h1>
+                    <br></br>
+
+
+                    <h:inputHidden value="#{clienteBean.clienteSelecionado.idCliente}" />
+                    <h:panelGrid columns="2" styleClass="fonte" id="painel">
+
+
+                        <h:outputLabel value="*Nome:" style="font-family: monospace;" />
+                        <p:inputText id="nome" value="#{clienteBean.clienteSelecionado.nome}" 
+                                     style="width: 570px;font-family: monospace"  
+                                     required="true" requiredMessage="Erro: Campo NOME em branco" 
+                                     placeholder="Nome"/>
+
+
+
+                        <h:outputLabel value="*Endereço:" style="font-family: monospace;"/>
+                        <p:inputText id="endereco" value="#{clienteBean.clienteSelecionado.endereco}" 
+                                     style="width: 570px;font-family: monospace"
+                                     required="true" requiredMessage="Erro: Campo ENDEREÇO em branco"
+                                     placeholder="Endereço"/>
+
+
+                        <h:outputLabel value="*CPF:" style="font-family: monospace;"/>
+                        <p:inputMask id="cpf" mask="99999999999" value="#{clienteBean.clienteSelecionado.cpf}"
+                                     style="width: 170px;font-family: monospace" 
+                                     required="true" requiredMessage="Erro: Campo CPF em branco"
+                                     placeholder="CPF">
+
+                            <f:validator validatorId="cpf"/>
+                        </p:inputMask>
+
+
+                        <h:outputLabel value="E-mail:" style="font-family: monospace;"/>
+                        <p:inputText id="email" value="#{clienteBean.clienteSelecionado.email}"
+                                     style="width: 570px;font-family: monospace" 
+                                     required="true" requiredMessage="Erro: Campo EMAIL em branco"
+                                     placeholder="E-mail"/>
+
+
+                        <h:outputLabel value="*Renda:" style="font-family: monospace;"/>
+                        <p:inputText id="renda" value="#{clienteBean.clienteSelecionado.renda}"
+                                     style="width: 170px;font-family: monospace"
+                                     required="true" requiredMessage="Favor me informar a Renda"
+                                     >
+                            <f:convertNumber minFractionDigits="2"/>
+                        </p:inputText>
+
+
+                        <h:outputLabel value="*Data do cadastro:" style="font-family: monospace;"/>
+                        <p:inputMask id="dt" mask="99/99/9999"  value="#{clienteBean.clienteSelecionado.dataCadastro}"
+                                     style="width: 170px;font-family: monospace"
+                                     required="true" requiredMessage="Erro: Campo DATA em branco" placeholder="99/99/9999"/>
+
+
+                        <p:focus context="painel"/>
+                    </h:panelGrid>
+                    <br></br>
+                    <p:messages />
+                    <h:outputLabel value="*Campos Obrigatorios" style="color: red"/>
+
+
+                    <hr></hr>
+
+
+                    <h:commandButton styleClass="btn btn-success" value="Salvar" action="#{clienteBean.salvar}"
+                                     style="font-family: monospace"/>
+                    <h:commandButton styleClass="btn btn-primary" action="#{clienteBean.novo()}"  
+                                     style="font-family: monospace" value="Novo Cliente" title="Novo"/>
+
+
+                </center>
+                HUWHUWHUW
+
+            </h:form>
+
+        </form>
+    </h:body>
+
+</ui:decorate>
+
