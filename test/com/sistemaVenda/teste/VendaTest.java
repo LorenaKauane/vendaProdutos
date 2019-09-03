@@ -34,7 +34,6 @@ public class VendaTest extends TestHeranca {
     Produto p2;
     Produto p3;
             
-    //@After
     @Ignore
     public void limpaBanco() {
 
@@ -46,8 +45,7 @@ public class VendaTest extends TestHeranca {
             vendaRn.excluir(venda);
         }
     }
-    
-    //@Test
+
     @Ignore
     public void registroTest() {
         VendaRN vendaRN = new VendaRN();
@@ -75,10 +73,8 @@ public class VendaTest extends TestHeranca {
         assertEquals(3, vendas.size());
     }
     
-    //@Before
     @Ignore
     public void setUp() {
-        //Cliente c1 = new Cliente(cpf, email, endereco, nome, dataCadastro, renda);
         c1 = new Cliente("10658285947", "teste@teste", "Rua teste ok", "Luana", "Hoje", 1234.50);
         c2 = new Cliente("08379158482", "teste@teste", "Leonor", "João", "Hoje", 4835);
         c3 = new Cliente("52439519278", "teste@teste", "Julio vernes", "Felipe", "Hoje", 3.200);
@@ -101,7 +97,6 @@ public class VendaTest extends TestHeranca {
 
     
     @Test
-    //Nao funciona
     public void deletar(){
         
         VendaRN vendaRn = new VendaRN();
@@ -111,9 +106,4 @@ public class VendaTest extends TestHeranca {
         System.out.println("RESULTADO DA VENDA:::::: "+resultado.getIdVenda());
         
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }

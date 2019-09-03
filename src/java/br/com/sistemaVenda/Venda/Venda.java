@@ -16,17 +16,14 @@ import javax.persistence.ManyToOne;
 @Entity (name = "venda")
 public class Venda implements Serializable {
     @Id
-    @GeneratedValue //incremeentar 
+    @GeneratedValue 
     private Integer idVenda;
-    /*Relação de venda com o cliente...
-      Um Cliente esta relacionado com varias Vendas
-      Uma venda esta relacionado com varios Produtos*/
     @ManyToOne
-    @JoinColumn(name="id_cliente", nullable = false) // Chave estrangeira, nullable e para ser obrigatorio
+    @JoinColumn(name="id_cliente", nullable = false) 
     private Cliente cliente;
     
     @ManyToOne
-    @JoinColumn(name="id_produto", nullable = false) // Chave estrangeira 
+    @JoinColumn(name="id_produto", nullable = false) 
     private Produto produto;
     @Column(name = "data_venda")
     private String dataVenda;

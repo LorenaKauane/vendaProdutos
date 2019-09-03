@@ -10,17 +10,16 @@ import org.junit.BeforeClass;
 
 public abstract class TestHeranca {
     
-     //implementar as interfaces 
     private static Session sessao;
     private static Transaction transacao;
 
-    @BeforeClass //Vai ser executado antes de outros test que eu tiver nessa classe 
+    @BeforeClass 
     public static void abreConexao() {
-        sessao = HibernateUtil.getSessionFactory().getCurrentSession(); // abre a sessão 
-        transacao = sessao.beginTransaction(); // começa a transação, comit do banco para salvar
+        sessao = HibernateUtil.getSessionFactory().getCurrentSession();
+        transacao = sessao.beginTransaction();
     }
 
-    @AfterClass //Esse metodo só vai rodado por ultimo 
+    @AfterClass
     public static void fechaConexao() {
 
         try {

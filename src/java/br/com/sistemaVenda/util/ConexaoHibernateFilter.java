@@ -16,25 +16,21 @@ public class ConexaoHibernateFilter implements Filter {
 
     @Override
     public void init(FilterConfig config) throws ServletException {
-        //Executado inicialmente 
-        this.sf = HibernateUtil.getSessionFactory(); // atribuir o get session
+        this.sf = HibernateUtil.getSessionFactory();
     }
 
     @Override
     public void doFilter(ServletRequest serveletFilter, ServletResponse serveletResponse,
             FilterChain chain) throws IOException, ServletException {
         try {
-            this.sf.getCurrentSession().beginTransaction(); // Pego a conexao eComeçou a transação
-            chain.doFilter(serveletFilter, serveletResponse); // processo interno
-            this.sf.getCurrentSession().getTransaction().commit();// comitou a transação para funcionar no banco
+            this.sf.getCurrentSession().beginTransaction(); 
+            chain.doFilter(serveletFilter, serveletResponse); 
+            this.sf.getCurrentSession().getTransaction().commit();
             this.sf.getCurrentSession().close();
         } catch (Throwable ex) {
             try {
                 if(this.sf.getCurrentSession().getTransaction().isActive()){ 
-                    /*Se caso der erro na linha 29 onde comita, cai no cath, onde cai no Try novamente
-                    Para verficar, se estiver já ativo ele da um roolback como se desligasse e começasse dnv e joga
-                    a exessão no Servelet expetion*/
-                    this.sf.getCurrentSession().getTransaction().rollback(); // Voltar a atras 
+                    this.sf.getCurrentSession().getTransaction().rollback(); 
                 }
             } catch (Throwable e) {
                 e.printStackTrace();
@@ -48,6 +44,5 @@ public class ConexaoHibernateFilter implements Filter {
     public void destroy() {
         
     }
-    //Filtro implementa um
 
 }

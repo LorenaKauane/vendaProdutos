@@ -30,8 +30,6 @@ public class ClienteDAOHibernate implements ClienteDao {
         Criteria lista = sessao.createCriteria(Cliente.class);
         return lista.list();
     }
-    //http://www.guj.com.br/t/paginacao-com-hibernate/269775/2
-    //http://www.devmedia.com.br/consultas-com-hql-no-hibernate-3/29611
 
     @Override
     public void excluir(Cliente cliente) {

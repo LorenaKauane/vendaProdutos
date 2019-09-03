@@ -20,10 +20,8 @@ import br.com.sistemaVenda.cliente.ClienteDao;
  */
 public class DAOFactory {
 
-    //Atribuir a nossa sessão ao objeto clienteDAO
     public static ClienteDao criaClienteDAO() {
         ClienteDAOHibernate clienteDAOHibernate = new ClienteDAOHibernate();
-        //Setando a sessão 
         clienteDAOHibernate.setSessao(HibernateUtil.getSessionFactory().getCurrentSession());
         return clienteDAOHibernate;
     }

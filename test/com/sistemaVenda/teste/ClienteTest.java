@@ -21,7 +21,6 @@ public class ClienteTest extends TestHeranca {
 
     @Before
     public void setUp() {
-        //Cliente c1 = new Cliente(cpf, email, endereco, nome, dataCadastro, renda);
         Cliente c1 = new Cliente("10658285947", "teste@teste", "Rua teste ok", "Luana", "Hoje", 1234.50);
         Cliente c2 = new Cliente("08379158482", "teste@teste", "Leonor", "João", "Hoje", 4835);
         Cliente c3 = new Cliente("52439519278", "teste@teste", "Julio vernes", "Felipe", "Hoje", 3.200);
@@ -64,7 +63,7 @@ public class ClienteTest extends TestHeranca {
         Cliente clienteExcluido = lista.get(0);
 
         clienteRn.excluir(clienteExcluido);
-        //carregar os elementos do banco
+
         lista = clienteRn.listar();
 
         assertEquals(3, lista.size());
@@ -74,18 +73,18 @@ public class ClienteTest extends TestHeranca {
     public void pesquisaTest() {
 
         ClienteRN clienteRn = new ClienteRN();
-        //pesquisar
+
         Cliente clientePesquisado = clienteRn.pesquisar("rena");
-        //compara o endereco
+
         assertEquals("Luiz gonzaga", clientePesquisado.getEndereco());
 
     }
 
     public void alterarTest() {
         ClienteRN clienteRn = new ClienteRN();
-        //pesquisar
+
         Cliente clientePesquisado = clienteRn.pesquisar("rena");
-        //compara o endereco
+
         assertEquals("Luiz gonzaga", clientePesquisado.getEndereco());
         
         clientePesquisado.setCpf("10658285947");

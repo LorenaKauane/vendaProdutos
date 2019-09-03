@@ -21,7 +21,7 @@ public class FuncionarioTest extends TestHeranca {
     @Test
     @Ignore
     public void salvar() {
-        //nome, senha, cpf, setor
+
         Funcionario f1 = new Funcionario("LorenaKauane", "123", "222", "Diretora");
         Funcionario f2 = new Funcionario("Joãozinho", "456", "333", "Zelador");
         Funcionario f3 = new Funcionario("Joaninha", "789", "444", "Administrador");

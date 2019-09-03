@@ -39,17 +39,7 @@ public class RegistroVendaBean {
             }
 
             } 
-        
-        
-
-        /*if (this.produtoSelecionado.getDescricao() != null
-                && !this.produtoSelecionado.getDescricao().equals("")) {
-            produtoPesquisado = produtoRN.pesquisarPorNome(this.produtoSelecionado.getDescricao());
-            if (produtoPesquisado != null) {
-                this.carrinhoCompras.add(produtoPesquisado);
-                calculaTotal();
-            }
-        }*/
+    
         return null;
     }
 
@@ -137,7 +127,6 @@ public class RegistroVendaBean {
         
     }
 
-    /* ***************** Get e Set ***************** */
     public Cliente getClienteSelecionado() {
         return clienteSelecionado;
     }

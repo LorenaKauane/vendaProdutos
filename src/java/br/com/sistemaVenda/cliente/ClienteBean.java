@@ -13,7 +13,6 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "clienteBean")
 @SessionScoped
-//@RequestScoped
 public class ClienteBean {
 
     private Cliente clienteSelecionado = new Cliente();
@@ -26,10 +25,6 @@ public class ClienteBean {
         if (this.clienteSelecionado.getIdCliente() != null
                 && this.clienteSelecionado.getIdCliente() != 0) {
             clienteRN.alterar(this.clienteSelecionado);
-            /*FacesMessage faces = new FacesMessage(
-                    "O "+this.clienteSelecionado.getNome()+" Editado com sucesso!");
-            FacesContext contexto = FacesContext.getCurrentInstance();
-            contexto.addMessage(null, faces);*/
             adicionaMensagem("O " + this.clienteSelecionado.getNome() + " Editado com sucesso!", FacesMessage.SEVERITY_INFO);
         } else {
             clienteRN.salvar(clienteSelecionado);
